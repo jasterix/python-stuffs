@@ -1,0 +1,24 @@
+
+from __future__ import print_function
+import json
+from collections import namedtuple
+
+data= '{"terms": "deductible", "cost": {"name": "out of pocket", "related": "coinsurance"}}'
+
+# NOTE: Parse JSON into an object with attributes corresponding to dict keys:
+x = json.loads(data, object_hook=lambda d: Namespace(**d))
+print(x.terms)
+print(x.cost.name)
+print(x.cost.related)
+
+#NOTE: you can parse data with conditons
+#NOTE: code below parses numbers as floats
+json.loads(json_string,parse_float=Decimal)
+# RESULT----> {u'name': u'Product-1', u'price': Decimal('12.50'), u'quantity': 1}
+
+# default-- json objects are converted into python dicts. To convert them to named Tuples:
+from collections import namedtuple
+Product = namedtuple('Product',['name','quantity','price'])
+json.loads('{"name":"Product-1","quantity":1,"price":12.50}',object_hook=lambda x: Product(**x),parse_float=Decimal)
+
+#RESULT--> Product(name=u'Product-1', quantity=1, price=Decimal('12.50'))
