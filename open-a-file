@@ -1,0 +1,29 @@
+# NOTE if you only open the file (f = open(file.txt, 'r'), you have to remember to explicitly close it
+
+with open('file.txt, 'r') as f:
+  f_contents = f.read()
+  print(f_contents) #NOTE prints all content of the file, which has risk of running out of memory
+  
+ f_contents = f.readlines()
+  print(f_contents() #NOTE reads every line of the file as a dif element 
+  
+   f_contents = f.readline()
+  print(f_contents() #NOTE prints FIRST line of the file as a dif element, then the second + each time you run it 
+  
+with open('file.txt, 'r') as f:
+  for line in f:
+    print(line, end='') #NOTE doesn't read all of the contents at once. It gets on line at a time
+    
+  with open('file.txt, 'r') as f:
+  f_contents = f.read(100) #NOTE prints the first 100 characters of the file
+  print(f_contents, end='') #NOTE each time you run, it picks up where it left off until the end of the file
+  
+  with open('file.txt, 'r') as f:
+    size_to_read = 100
+    f_contents = f.read(size_to_read)
+   
+   while len(f_contents) > 0: #NOTE check the length of the file
+      print(f_contents, en='') #NOTE print the first 100 characters (defined in size_to_read)
+      f_contents = f.read(size_to_read)  #NOTE update the length of the file
+      
+      print(f.tell() <-- #NOTE this just tells you what character you're at
