@@ -26,4 +26,15 @@ with open('file.txt, 'r') as f:
       print(f_contents, en='') #NOTE print the first 100 characters (defined in size_to_read)
       f_contents = f.read(size_to_read)  #NOTE update the length of the file
       
-      print(f.tell() <-- #NOTE this just tells you what character you're at
+      print(f.tell() #<-- NOTE this just tells you what character you're at
+      f.seek(0) #<-- NOTE this sets the position you wwant to begin with
+
+#----------WRITING TO FILES-------
+
+with open('test2.txt', 'w') as f: #NOTE if there's no tile, a new one will be created. if thereis, it will be overwritten
+  f.write('test')
+  f.write('test') #NOTE writes test a second time (testtest)
+  
+  f.seek(0)
+  f.write('test') #NOTE will only overwrite what it needs to. So in this case it would override the first 4 characters
+
